@@ -1,0 +1,23 @@
+
+listadupla.c,504
+#define RAND_SEED 5,58
+#define MAX 6,79
+#define CANT_TESTE 7,101
+#define INTERVALO 8,129
+typedef struct no 10,157
+  int info;11,177
+  int chave;12,189
+  struct no *ant;ant13,202
+  struct no *post;post14,220
+} no;15,239
+typedef struct listadupla 17,246
+  no *pri;pri18,274
+} listadupla;19,285
+int main(28,501
+listadupla * novalistadupla(65,1222
+no * novoNo(77,1450
+no * busca_dup(89,1615
+void insere(106,1889
+void deleta(126,2220
+void imprime(142,2480
+void imprimereverso(150,2639
