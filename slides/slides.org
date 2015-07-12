@@ -27,22 +27,42 @@
 
 * Listas Ligadas
 ** Simples
-*** *Um* ponteiro: para o nó posterior TROCAR FIGURA
+*** 
+**** Figura                                                                        :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
 #+LATEX: \begin{center}
-[[file:fig/listasimple.png]]
+[[file:fig/casosimpleinsercionultimo.jpg][file:~/listaligada/slides/fig/casosimpleinsercionultimo.jpg]]
 #+LATEX: \end{center}
-- Percurso unidirecional
-- Remoção necessita de dois ponteiros
+**** Explicação                                                                    :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+- Lista Ligada Simples
+  - *Um* ponteiro, para o posterior
+  - Percurso unidirecional
+  - Remoção necessita de dois ponteiros
 ** Dupla
 :PROPERTIES:
 :ID:       dc1fe14f-de86-42b9-996d-b090ff0b09b5
 :END:
-*** *Dois* ponteiros: para os nós anterior e posterior TROCAR FIGURA
+*** 
+**** Figura                                                                        :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
 #+LATEX: \begin{center}
-[[file:fig/listadoble.png]]
+[[file:fig/casoduploinsercionultimo.jpg][file:~/listaligada/slides/fig/casoduploinsercionultimo.jpg]]
 #+LATEX: \end{center}
-- Percurso bidirecional
-- Remoção necessita de um ponteiro
+**** Explicação                                                                    :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+- Lista Ligada Dupla
+  - *Dois* ponteiros, para o anterior e o posterior
+  - Percurso bidirecional
+  - Remoção necessita de um ponteiro
 ** Vantagens e Desvantagens
 *** Lista Simples
 #+LATEX: \begin{center}
