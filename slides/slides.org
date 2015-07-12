@@ -1,6 +1,7 @@
 #+TITLE:     Análise de complexidade para Listas Ligadas Simples e Duplas
 #+AUTHOR:    Martha Hilda Timoteo Sanchez, Rafael Lemes Beirigo
 #+EMAIL:     {marthaht, rafaelb}@lncc.br
+#+DATE:      13 de Julho de 2015
 
 #+DESCRIPTION: Análise de complexidade para Listas Ligadas Simples e Duplas
 #+KEYWORDS:  algoritmos, complexidade, listas ligadas, listas duplamente encadeadas
