@@ -260,7 +260,7 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 | 100000 |  19 |
 *** Lista Simples -- Gráfico
 #+LATEX: \begin{center}
-[[file:fig/resultadolistasimplePiorCaso-slides.png][file:~/listaligada/slides/fig/resultadolistasimplePiorCaso-slides.png]]
+[[file:fig/resultadolistasimplePiorCaso-slides.png][file:~/listaligada/slides/fig/resultadolistasimplePiorCaso.png]]
 #+LATEX: \end{center}
 *** Tabela doble
 |    $n$ | $t$ |
@@ -278,7 +278,7 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 | 100000 |  18 |
 *** Gráfico doble
 #+LATEX: \begin{center}
-[[file:fig/resultadolistaduplaPiorCaso-slides.png][file:~/listaligada/slides/fig/resultadolistaduplaPiorCaso-slides.png]]
+[[file:fig/resultadolistaduplaPiorCaso-slides.png][file:~/listaligada/slides/fig/resultadolistaduplaPiorCaso.png]]
 #+LATEX: \end{center}
 *** Gráfico comparação
 #+LATEX: \begin{center}
