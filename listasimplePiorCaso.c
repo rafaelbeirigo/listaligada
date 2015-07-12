@@ -56,7 +56,7 @@ int main(void)
           total = fim_conta - inicio_conta;
           printf("n: %9d   total: %9d \n", n, total);
 
-          f = fopen("resultadolistasimplepiorcaso.txt", "a");
+          f = fopen("resultadolistasimplePiorCaso.txt", "a");
           fprintf(f, "%d\t%d\n", n, total);
           fclose(f);
         }
