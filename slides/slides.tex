@@ -1,4 +1,4 @@
-% Created 2015-07-11 Sat 18:34
+% Created 2015-07-12 Sun 12:33
 \documentclass[bigger]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -37,7 +37,7 @@
 \label{sec-1}
 \subsection{Simples}
 \label{sec-1-1}
-\begin{frame}[label=sec-1-1-1]{\alert{Um} ponteiro: para o nó posterior}
+\begin{frame}[label=sec-1-1-1]{\alert{Um} ponteiro: para o nó posterior TROCAR FIGURA}
 \begin{center}
 \includegraphics[width=.9\linewidth]{fig/listasimple.png}
 \end{center}
@@ -48,7 +48,7 @@
 \end{frame}
 \subsection{Dupla}
 \label{sec-1-2}
-\begin{frame}[label=sec-1-2-1]{\alert{Dois} ponteiros: para os nós anterior e posterior}
+\begin{frame}[label=sec-1-2-1]{\alert{Dois} ponteiros: para os nós anterior e posterior TROCAR FIGURA}
 \begin{center}
 \includegraphics[width=.9\linewidth]{fig/listadoble.png}
 \end{center}
@@ -57,20 +57,9 @@
 \item Remoção necessita de um ponteiro
 \end{itemize}
 \end{frame}
-\subsection{Ordem Crescente}
-\label{sec-1-3}
-\begin{frame}[label=sec-1-3-1]{Controlado no momento da \alert{inserção}}
-\begin{center}
-\includegraphics[width=.9\linewidth]{fig/listasimple.png}
-\end{center}
-
-\begin{center}
-\includegraphics[width=.9\linewidth]{fig/listadoble.png}
-\end{center}
-\end{frame}
 \subsection{Vantagens e Desvantagens}
-\label{sec-1-4}
-\begin{frame}[label=sec-1-4-1]{Lista Simples}
+\label{sec-1-3}
+\begin{frame}[label=sec-1-3-1]{Lista Simples}
 \begin{center}
 \includegraphics[width=.9\linewidth]{fig/listasimple.png}
 \end{center}
@@ -84,7 +73,7 @@
 \end{itemize}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-1-4-2]{Lista Dupla}
+\begin{frame}[label=sec-1-3-2]{Lista Dupla}
 \begin{center}
 \includegraphics[width=.9\linewidth]{fig/listadoble.png}
 \end{center}
@@ -210,7 +199,7 @@ $n$ & $t$\\
 \end{tabular}
 \end{center}
 \end{frame}
-\begin{frame}[label=sec-3-1-3]{Lista Simples -- Gráfico}
+\begin{frame}[label=sec-3-1-3]{Lista Simples -- Gráfico LEGENDA MAIOR}
 \begin{center}
 \href{fig/listasimples-log.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/phd.algo/um/piorcaso/fig/listasimples-log.png}}
 \end{center}
@@ -251,12 +240,12 @@ $n$ & $t$\\
 \end{tabular}
 \end{center}
 \end{frame}
-\begin{frame}[label=sec-3-1-6]{Lista Dupla -- Gráfico}
+\begin{frame}[label=sec-3-1-6]{Lista Dupla -- Gráfico LEGENDA MAIOR}
 \begin{center}
 \href{fig/listasimples-log.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/phd.algo/um/piorcaso/fig/listadupla-log.png}}
 \end{center}
 \end{frame}
-\begin{frame}[label=sec-3-1-7]{Análise: desempenho equiparável (inesperado)}
+\begin{frame}[label=sec-3-1-7]{Análise: desempenho equiparável (inesperado) DUAS COLUNAS (gráfico com bullets)}
 \begin{center}
 \href{fig/compara.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/phd.algo/um/piorcaso/fig/compara.png}}
 \end{center}
@@ -272,6 +261,52 @@ $n$ & $t$\\
 \item Resultado corresponde, portanto, à complexidade do \alert{caso médio},
 onde se espera que o desempenho seja equiparável
 \end{itemize}
+\end{frame}
+\subsection{Pior caso REFAZER EXPERIMENTO E FORÇAR ESCASSEZ DE RECURSO}
+\label{sec-3-2}
+\begin{frame}[fragile,label=sec-3-2-1]{Algoritmo}
+ \begin{verbatim}
+for (n = 0; n <= MAX; ++n) { // MAX == 1e10
+  insere(l, n);
+  if (n % INTERVALO == 0) {
+    time(&inicio);
+    for (i = 1; i <= CANT_TESTE; ++i) {
+      deleta(l, n-1);
+      insere(l, n-1);
+    }
+    time(&fim);
+    total = fim - inicio;
+  }
+}
+\end{verbatim}
+\end{frame}
+\begin{frame}[fragile,label=sec-3-2-2]{Algoritmo}
+ \begin{verbatim}
+for (n = 0; n <= MAX; ++n) {
+  insere(l, n);
+  if (n % INTERVALO == 0) { // INTERVALO == 1e4
+    time(&inicio);
+    for (i = 1; i <= CANT_TESTE; ++i) {
+      deleta(l, n-1);
+      insere(l, n-1);
+    }
+    time(&fim);
+    total = fim - inicio;
+  }
+}
+\end{verbatim}
+\end{frame}
+\begin{frame}[label=sec-3-2-3]{Tabela simple}
+\url{file:///home/rafaelbeirigo/listaligada/resultadolistasimplepiorcaso.txt}
+\end{frame}
+\begin{frame}[label=sec-3-2-4]{Gráfico simple}
+\end{frame}
+\begin{frame}[label=sec-3-2-5]{Tabela doble}
+\url{file:///home/rafaelbeirigo/listaligada/resultadolistaduplapiorcaso.txt}
+\end{frame}
+\begin{frame}[label=sec-3-2-6]{Gráfico doble}
+\end{frame}
+\begin{frame}[label=sec-3-2-7]{Gráfico comparação}
 \end{frame}
 % Emacs 24.5.1 (Org mode 8.2.10)
 \end{document}

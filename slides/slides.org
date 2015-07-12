@@ -26,7 +26,7 @@
 
 * Listas Ligadas
 ** Simples
-*** *Um* ponteiro: para o nó posterior
+*** *Um* ponteiro: para o nó posterior TROCAR FIGURA
 #+LATEX: \begin{center}
 [[file:fig/listasimple.png]]
 #+LATEX: \end{center}
@@ -36,24 +36,12 @@
 :PROPERTIES:
 :ID:       dc1fe14f-de86-42b9-996d-b090ff0b09b5
 :END:
-*** *Dois* ponteiros: para os nós anterior e posterior
+*** *Dois* ponteiros: para os nós anterior e posterior TROCAR FIGURA
 #+LATEX: \begin{center}
 [[file:fig/listadoble.png]]
 #+LATEX: \end{center}
 - Percurso bidirecional
 - Remoção necessita de um ponteiro
-** Ordem Crescente
-:PROPERTIES:
-:ID:       3dea5dcc-05b0-49ba-8b6a-a8b9ce1d286d
-:END:
-*** Controlado no momento da *inserção*
-#+LATEX: \begin{center}
-[[file:fig/listasimple.png]]
-#+LATEX: \end{center}
-
-#+LATEX: \begin{center}
-[[file:fig/listadoble.png]]
-#+LATEX: \end{center}
 ** Vantagens e Desvantagens
 *** Lista Simples
 #+LATEX: \begin{center}
@@ -167,7 +155,7 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 | 131072 |  5649 |
 | 262144 | 23473 |
 | 524288 | 63852 |
-*** Lista Simples -- Gráfico
+*** Lista Simples -- Gráfico LEGENDA MAIOR
 #+LATEX: \begin{center}
 [[file:fig/listasimples-log.png][file:~/phd.algo/um/piorcaso/fig/listasimples-log.png]]
 #+LATEX: \end{center}
@@ -197,11 +185,11 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 | 131072 |  6936 |
 | 262144 | 22018 |
 | 524288 | 61744 |
-*** Lista Dupla -- Gráfico
+*** Lista Dupla -- Gráfico LEGENDA MAIOR
 #+LATEX: \begin{center}
 [[file:fig/listasimples-log.png][file:~/phd.algo/um/piorcaso/fig/listadupla-log.png]]
 #+LATEX: \end{center}
-*** Análise: desempenho equiparável (inesperado)
+*** Análise: desempenho equiparável (inesperado) DUAS COLUNAS (gráfico com bullets)
 #+LATEX: \begin{center}
 [[file:fig/compara.png][file:~/phd.algo/um/piorcaso/fig/compara.png]]
 #+LATEX: \end{center}
@@ -212,3 +200,41 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
   - Posições aleatórias
 - Resultado corresponde, portanto, à complexidade do *caso médio*,
   onde se espera que o desempenho seja equiparável
+** Pior caso REFAZER EXPERIMENTO E FORÇAR ESCASSEZ DE RECURSO
+*** Algoritmo
+#+BEGIN_SRC c
+  for (n = 0; n <= MAX; ++n) { // MAX == 1e10
+    insere(l, n);
+    if (n % INTERVALO == 0) {
+      time(&inicio);
+      for (i = 1; i <= CANT_TESTE; ++i) {
+        deleta(l, n-1);
+        insere(l, n-1);
+      }
+      time(&fim);
+      total = fim - inicio;
+    }
+  }
+#+END_SRC
+*** Algoritmo
+#+BEGIN_SRC c
+  for (n = 0; n <= MAX; ++n) {
+    insere(l, n);
+    if (n % INTERVALO == 0) { // INTERVALO == 1e4
+      time(&inicio);
+      for (i = 1; i <= CANT_TESTE; ++i) {
+        deleta(l, n-1);
+        insere(l, n-1);
+      }
+      time(&fim);
+      total = fim - inicio;
+    }
+  }
+#+END_SRC
+*** Tabela simple
+[[file:~/listaligada/resultadolistasimplepiorcaso.txt]]
+*** Gráfico simple
+*** Tabela doble
+[[file:~/listaligada/resultadolistaduplapiorcaso.txt]]
+*** Gráfico doble
+*** Gráfico comparação
