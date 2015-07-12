@@ -1,4 +1,4 @@
-% Created 2015-07-12 Sun 12:33
+% Created 2015-07-12 Sun 15:32
 \documentclass[bigger]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -23,7 +23,7 @@
 \vspace*{-45pt}
 \usetheme{default}
 \author{Martha Hilda Timoteo Sanchez, Rafael Lemes Beirigo}
-\date{\today}
+\date{13 de Julho de 2015}
 \title{Análise de complexidade para Listas Ligadas Simples e Duplas}
 \hypersetup{
   pdfkeywords={algoritmos, complexidade, listas ligadas, listas duplamente encadeadas},
@@ -199,9 +199,9 @@ $n$ & $t$\\
 \end{tabular}
 \end{center}
 \end{frame}
-\begin{frame}[label=sec-3-1-3]{Lista Simples -- Gráfico LEGENDA MAIOR}
+\begin{frame}[label=sec-3-1-3]{Lista Simples -- Gráfico}
 \begin{center}
-\href{fig/listasimples-log.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/phd.algo/um/piorcaso/fig/listasimples-log.png}}
+\href{fig/resultadolistasimple08julio.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/listaligada/slides/fig/resultadolistasimple08julio.png}}
 \end{center}
 \end{frame}
 \begin{frame}[label=sec-3-1-4]{Lista Dupla -- pontos iniciais: rapidez \emph{vs.} precisão}
@@ -240,29 +240,39 @@ $n$ & $t$\\
 \end{tabular}
 \end{center}
 \end{frame}
-\begin{frame}[label=sec-3-1-6]{Lista Dupla -- Gráfico LEGENDA MAIOR}
+\begin{frame}[label=sec-3-1-6]{Lista Dupla -- Gráfico}
 \begin{center}
-\href{fig/listasimples-log.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/phd.algo/um/piorcaso/fig/listadupla-log.png}}
+\href{fig/resultadolistadupla08julio.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/listaligada/slides/fig/resultadolistadupla08julio.png}}
 \end{center}
 \end{frame}
-\begin{frame}[label=sec-3-1-7]{Análise: desempenho equiparável (inesperado) DUAS COLUNAS (gráfico com bullets)}
+\begin{frame}[label=sec-3-1-7]{Listas Simples e Dupla -- Comparação}
 \begin{center}
-\href{fig/compara.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/phd.algo/um/piorcaso/fig/compara.png}}
+\href{fig/resultadocompara08julio.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/listaligada/slides/fig/resultadocompara08julio.png}}
 \end{center}
 \end{frame}
-\begin{frame}[label=sec-3-1-8]{Possíveis razões}
+\begin{frame}[label=sec-3-1-8]{Análise: desempenho equiparável}
+\begin{columns}
+\begin{column}{0.65\textwidth}
+\begin{center}
+\href{fig/resultadocompara08julio.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/listaligada/slides/fig/resultadocompara08julio.png}}
+\end{center}
+\end{column}
+\begin{column}{0.35\textwidth}
+\scriptsize
 \begin{itemize}
 \item Complexidade teórica considera \alert{pior} caso, i.e., inserção sempre na
 última (simples) e penúltima (dupla) posições
 \item Experimento realizou inserções de números aleatórios
 \begin{itemize}
-\item Posições aleatórias
+\item \scriptsize Posições aleatórias
 \end{itemize}
 \item Resultado corresponde, portanto, à complexidade do \alert{caso médio},
 onde se espera que o desempenho seja equiparável
 \end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
-\subsection{Pior caso REFAZER EXPERIMENTO E FORÇAR ESCASSEZ DE RECURSO}
+\subsection{Pior caso}
 \label{sec-3-2}
 \begin{frame}[fragile,label=sec-3-2-1]{Algoritmo}
  \begin{verbatim}
@@ -296,17 +306,58 @@ for (n = 0; n <= MAX; ++n) {
 }
 \end{verbatim}
 \end{frame}
-\begin{frame}[label=sec-3-2-3]{Tabela simple}
-\url{file:///home/rafaelbeirigo/listaligada/resultadolistasimplepiorcaso.txt}
+\begin{frame}[label=sec-3-2-3]{Lista Simples -- Tabela}
+\begin{center}
+\begin{tabular}{rr}
+$n$ & $t$\\
+\hline
+0 & 0\\
+10000 & 1\\
+20000 & 2\\
+30000 & 3\\
+40000 & 5\\
+50000 & 7\\
+60000 & 10\\
+70000 & 13\\
+80000 & 15\\
+90000 & 16\\
+100000 & 19\\
+\end{tabular}
+\end{center}
 \end{frame}
-\begin{frame}[label=sec-3-2-4]{Gráfico simple}
+\begin{frame}[label=sec-3-2-4]{Lista Simples -- Gráfico}
+\begin{center}
+\href{fig/resultadolistasimplePiorCaso-slides.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/listaligada/slides/fig/resultadolistasimplePiorCaso-slides.png}}
+\end{center}
 \end{frame}
 \begin{frame}[label=sec-3-2-5]{Tabela doble}
-\url{file:///home/rafaelbeirigo/listaligada/resultadolistaduplapiorcaso.txt}
+\begin{center}
+\begin{tabular}{rr}
+$n$ & $t$\\
+\hline
+0 & 0\\
+10000 & 1\\
+20000 & 3\\
+30000 & 3\\
+40000 & 5\\
+50000 & 7\\
+60000 & 9\\
+70000 & 10\\
+80000 & 15\\
+90000 & 14\\
+100000 & 18\\
+\end{tabular}
+\end{center}
 \end{frame}
 \begin{frame}[label=sec-3-2-6]{Gráfico doble}
+\begin{center}
+\href{fig/resultadolistaduplaPiorCaso-slides.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/listaligada/slides/fig/resultadolistaduplaPiorCaso-slides.png}}
+\end{center}
 \end{frame}
 \begin{frame}[label=sec-3-2-7]{Gráfico comparação}
+\begin{center}
+\href{fig/resultadocomparaPiorCaso.png}{\includegraphics[width=.9\linewidth]{/home/rafaelbeirigo/listaligada/slides/fig/resultadocomparaPiorCaso.png}}
+\end{center}
 \end{frame}
 % Emacs 24.5.1 (Org mode 8.2.10)
 \end{document}

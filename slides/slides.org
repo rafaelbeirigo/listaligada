@@ -156,9 +156,9 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 | 131072 |  5649 |
 | 262144 | 23473 |
 | 524288 | 63852 |
-*** Lista Simples -- Gráfico LEGENDA MAIOR
+*** Lista Simples -- Gráfico
 #+LATEX: \begin{center}
-[[file:fig/listasimples-log.png][file:~/phd.algo/um/piorcaso/fig/listasimples-log.png]]
+[[file:fig/resultadolistasimple08julio.png][file:~/listaligada/slides/fig/resultadolistasimple08julio.png]]
 #+LATEX: \end{center}
 *** Lista Dupla -- pontos iniciais: rapidez /vs./ precisão
 | $n$ | $t$ |
@@ -186,22 +186,34 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 | 131072 |  6936 |
 | 262144 | 22018 |
 | 524288 | 61744 |
-*** Lista Dupla -- Gráfico LEGENDA MAIOR
+*** Lista Dupla -- Gráfico
 #+LATEX: \begin{center}
-[[file:fig/listasimples-log.png][file:~/phd.algo/um/piorcaso/fig/listadupla-log.png]]
+[[file:fig/resultadolistadupla08julio.png][file:~/listaligada/slides/fig/resultadolistadupla08julio.png]]
 #+LATEX: \end{center}
-*** Análise: desempenho equiparável (inesperado) DUAS COLUNAS (gráfico com bullets)
+*** Listas Simples e Dupla -- Comparação
 #+LATEX: \begin{center}
-[[file:fig/compara.png][file:~/phd.algo/um/piorcaso/fig/compara.png]]
+[[file:fig/resultadocompara08julio.png][file:~/listaligada/slides/fig/resultadocompara08julio.png]]
 #+LATEX: \end{center}
-*** Possíveis razões
+*** Análise: desempenho equiparável
+**** Gráfico                                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.65
+:END:
+#+LATEX: \begin{center}
+[[file:fig/resultadocompara08julio.png][file:~/listaligada/slides/fig/resultadocompara08julio.png]]
+#+LATEX: \end{center}
+**** Possíveis razões                                                              :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.35
+:END:
+\scriptsize
 - Complexidade teórica considera *pior* caso, i.e., inserção sempre na
   última (simples) e penúltima (dupla) posições
 - Experimento realizou inserções de números aleatórios
-  - Posições aleatórias
+  - \scriptsize Posições aleatórias
 - Resultado corresponde, portanto, à complexidade do *caso médio*,
   onde se espera que o desempenho seja equiparável
-** Pior caso REFAZER EXPERIMENTO E FORÇAR ESCASSEZ DE RECURSO
+** Pior caso
 *** Algoritmo
 #+BEGIN_SRC c
   for (n = 0; n <= MAX; ++n) { // MAX == 1e10
@@ -232,7 +244,7 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
     }
   }
 #+END_SRC
-*** Tabela simple
+*** Lista Simples -- Tabela
 |    $n$ | $t$ |
 |--------+-----|
 |      0 |   0 |
@@ -246,7 +258,10 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 |  80000 |  15 |
 |  90000 |  16 |
 | 100000 |  19 |
-*** Gráfico simple
+*** Lista Simples -- Gráfico
+#+LATEX: \begin{center}
+[[file:fig/resultadolistasimplePiorCaso-slides.png][file:~/listaligada/slides/fig/resultadolistasimplePiorCaso-slides.png]]
+#+LATEX: \end{center}
 *** Tabela doble
 |    $n$ | $t$ |
 |--------+-----|
@@ -262,4 +277,10 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
 |  90000 |  14 |
 | 100000 |  18 |
 *** Gráfico doble
+#+LATEX: \begin{center}
+[[file:fig/resultadolistaduplaPiorCaso-slides.png][file:~/listaligada/slides/fig/resultadolistaduplaPiorCaso-slides.png]]
+#+LATEX: \end{center}
 *** Gráfico comparação
+#+LATEX: \begin{center}
+[[file:fig/resultadocomparaPiorCaso.png][file:~/listaligada/slides/fig/resultadocomparaPiorCaso.png]]
+#+LATEX: \end{center}
