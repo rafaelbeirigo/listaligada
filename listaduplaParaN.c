@@ -47,7 +47,7 @@ int main() {
       total = fim - inicio;
       printf("n: %9d   total: %9d \n", n, total);
 
-      f = fopen("resultadolistaduplaparan.txt", "a");
+      f = fopen("resultadolistaduplaParaN.txt", "a");
       fprintf(f, "%d\t%d\n", n, total);
       fclose(f);
     }
