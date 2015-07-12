@@ -233,9 +233,33 @@ for (qtd = 1; qtd <= MAX; qtd *= 2) {
   }
 #+END_SRC
 *** Tabela simple
-[[file:~/listaligada/resultadolistasimplepiorcaso.txt]]
+|    $n$ | $t$ |
+|--------+-----|
+|      0 |   0 |
+|  10000 |   1 |
+|  20000 |   2 |
+|  30000 |   3 |
+|  40000 |   5 |
+|  50000 |   7 |
+|  60000 |  10 |
+|  70000 |  13 |
+|  80000 |  15 |
+|  90000 |  16 |
+| 100000 |  19 |
 *** Gráfico simple
 *** Tabela doble
-[[file:~/listaligada/resultadolistaduplapiorcaso.txt]]
+|    $n$ | $t$ |
+|--------+-----|
+|      0 |   0 |
+|  10000 |   1 |
+|  20000 |   3 |
+|  30000 |   3 |
+|  40000 |   5 |
+|  50000 |   7 |
+|  60000 |   9 |
+|  70000 |  10 |
+|  80000 |  15 |
+|  90000 |  14 |
+| 100000 |  18 |
 *** Gráfico doble
 *** Gráfico comparação
