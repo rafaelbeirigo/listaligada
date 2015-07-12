@@ -5,7 +5,8 @@
 
 #define RAND_SEED 17
 #define MAX (int)1e10
-#define CANT_TESTE (int)1e6
+#define CANT_TESTE (int)1e4
+#define INTERVALO (int)1e4
 
 FILE *f1;
 
@@ -39,32 +40,28 @@ int main(void)
     time_t inicio_conta,fim_conta,total;
     FILE *f;
     
-    srand(RAND_SEED);
-    
     l=cria();
     
-    for (qtd = 1; qtd <= MAX; qtd *= 2)
+    for (n = 0; n <= MAX; ++n)
       {
-        // completa a lista
-        for (i = 0; i < (qtd / 2); ++i)
-          l=insercao_enc(rand() % MAX,l);
+        l=insercao_enc(n,l);
 
-        time(&inicio_conta);
-        for (i = 1; i <= CANT_TESTE; ++i)
-          {
-            num = rand() % MAX;
-            l=insercao_enc(num,l);
-            l=remocion_enc(num,l);
+        if (n % INTERVALO == 0) {
+          time(&inicio_conta);
+          for (i = 1; i <= CANT_TESTE; ++i) {
+            l=remocion_enc(n,l);
+            l=insercao_enc(n,l);
           }
-        time(&fim_conta);
-        total = fim_conta - inicio_conta;
-        printf("qtd: %9d   total: %9d \n",qtd,total);
+          time(&fim_conta);
+          total = fim_conta - inicio_conta;
+          printf("n: %9d   total: %9d \n", n, total);
 
-        f = fopen("resultadolistasimple08julio.txt", "a");
-        fprintf(f, "%d\t%d\n", qtd, total);
-        fclose(f);
+          f = fopen("resultadolistasimplepiorcaso.txt", "a");
+          fprintf(f, "%d\t%d\n", n, total);
+          fclose(f);
+        }
       }
-    getchar();
+
     return 0;
 }
 

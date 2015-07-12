@@ -15,13 +15,14 @@ typedef struct no {
 } no;
 
 typedef struct listadupla {
-  no *pri;
+  no *cab;
 } listadupla;
 
-no * novoNo(int chave);
+no * novoNo();
 listadupla * novalistadupla();
 void insere(listadupla *l, int chave);
 void imprime(listadupla *l);
+void imprimereverso(listadupla *l);
 no * busca(listadupla *l, int chave);
 void deleta(listadupla *l, int chave);
 
@@ -32,10 +33,8 @@ int main() {
   FILE *f;
 
   l = novalistadupla();
-
-  insere(l, 0);
-
-  for (n = 1; n <= MAX; ++n) {
+  
+  for (n = 0; n <= MAX; ++n) {
     insere(l, n);
 
     if (n % INTERVALO == 0) {
@@ -61,77 +60,91 @@ listadupla * novalistadupla() {
   listadupla *l;
 
   l = (listadupla *)malloc(sizeof(listadupla));
-  l->pri = (no *)malloc(sizeof(no));
+  l->cab = (no *)malloc(sizeof(no));
 
-  l->pri->chave = l->pri->info = -1;
-  l->pri->ant = l->pri->post = l->pri;
+  l->cab->chave = l->cab->info = -1;
+  l->cab->ant = l->cab->post = l->cab;
 
   return l;
 }
 
-no * novoNo(int chave) {
+no * novoNo() {
   no *pNovo;
 
   pNovo = (no *)malloc(sizeof(no));
 
-  pNovo->chave = chave;
+  pNovo->chave = 0;
+  pNovo->info = 0;
   pNovo->ant = NULL;
   pNovo->post = NULL;
   
   return pNovo;
 }
 
-no * busca(listadupla *l, int chave) {
-  no *pAnt, *pUlt;
+no * busca_dup(listadupla *l, int x) {
+  no *ptlista, *ultimo, *pont, *ret;
 
-  pUlt = l->pri->ant;
-  if (pUlt == l->pri || pUlt->chave < chave)
-    return pUlt;
+  ptlista = l->cab;
 
-  for (pAnt = l->pri;
-       pAnt->post != l->pri && pAnt->post->chave <= chave;
-       pAnt = pAnt->post);
-    
-  return pAnt;
+  ultimo = ptlista->ant;
+
+  if (x == ultimo->chave) {
+    return ultimo;
+  }
+  else {
+    if (x < ultimo->chave) {
+      pont = ptlista->post;
+      while (pont->chave < x)
+        pont = pont->post;
+      return pont;
+    }
+  }
+
+  return ptlista;
 }
 
-void insere(listadupla *l, int chave) {
-  no *pNovo;
-  no *pAnt;
+void insere(listadupla *l, int x) {
+  no *pont, *anterior, *pt, *ptlista;
 
-  pAnt = busca(l, chave);
-
-  if (pAnt != l->pri && pAnt->chave == chave) return;
-    
-  pNovo = novoNo(chave);
-
-  pNovo->ant = pAnt;
-  pNovo->post = pAnt->post;
-
-  pAnt->post->ant = pNovo;
-  pAnt->post = pNovo;
-}
-
-void deleta(listadupla *l, int chave) {
-  no *pDel, *pAnt, *pPost;
-
-  pDel = busca(l, chave);
+  ptlista = l->cab;
   
-  if (pDel == l->pri || pDel->chave != chave) return;
+  pont = busca_dup(l, x);
+
+  if (pont == ptlista || pont->chave != x) {
+    anterior = pont->ant;
+    pt = novoNo();
+
+    pt->chave = x;
+    pt->ant = anterior;
+    pt->post = pont;
+
+    anterior->post = pt;
+    pont->ant = pt;
+  }
+}
+
+void deleta(listadupla *l, int x) {
+  no *pont, *anterior, *posterior, *ptlista;
+
+  ptlista = l->cab;
+  
+  pont = busca_dup(l, x);
+
+  if (pont != ptlista && pont->chave == x) {
+    anterior = pont->ant;
+    posterior = pont->post;
+
+    anterior->post = posterior;
+    posterior->ant = anterior;
     
-  pAnt = pDel->ant;
-  pPost = pDel->post;
-
-  pAnt->post = pPost;
-  pPost->ant = pAnt;
-
-  free(pDel);
+    free(pont);
+  }
 }
 
 void imprime(listadupla *l) {
   no *pAux;
   
-  for (pAux = l->pri->post; pAux != l->pri; pAux = pAux->post)
+  for (pAux = l->cab->post; pAux != l->cab; pAux = pAux->post)
     printf("%3d", pAux->chave);
   printf("\n");
 }
@@ -139,7 +152,7 @@ void imprime(listadupla *l) {
 void imprimereverso(listadupla *l) {
   no *pAux;
   
-  for (pAux = l->pri->ant; pAux != l->pri; pAux = pAux->ant)
+  for (pAux = l->cab->ant; pAux != l->cab; pAux = pAux->ant)
     printf("%3d", pAux->chave);
   printf("\n");
 }
